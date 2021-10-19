@@ -4,6 +4,7 @@ import {
   CreateMessageController,
   ensureAutheticated,
   GetLastMessagesController,
+  ProfileUserController,
 } from '.'
 
 const router = Router()
@@ -16,5 +17,7 @@ router.post(
 )
 
 router.get('/messages/last3', new GetLastMessagesController().handle)
+
+router.get('/profile', ensureAutheticated, new ProfileUserController().handle)
 
 export { router }
