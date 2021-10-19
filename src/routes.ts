@@ -3,6 +3,7 @@ import {
   AuthenticateUserController,
   CreateMessageController,
   ensureAutheticated,
+  GetLastMessagesController,
 } from '.'
 
 const router = Router()
@@ -13,5 +14,7 @@ router.post(
   ensureAutheticated,
   new CreateMessageController().handle
 )
+
+router.get('/messages/last3', new GetLastMessagesController().handle)
 
 export { router }
